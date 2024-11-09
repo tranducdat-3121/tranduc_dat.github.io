@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ Cá</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('aquarium/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            height: 100vh;
+        }
+        #hoca {
+            height: 300px;
+            position: relative;
+        }
+        .fish {
+            position: absolute;
+            width: 100px;
+            transition: transform 2s ease-in-out;
+        }
+        #shark {
+            position: absolute;
+            width: 150px;
+            animation-name: Shark;
+            animation-duration: 15s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+        }
+        @keyframes Shark {
+            0%   { left: 200px; top: 700px; }
+            20%  { left: 300px; top: 400px; }
+            40%  { left: 500px; top: 300px; }
+            50%  { left: 700px; top: 50px; }
+            60%  { left: 700px; top: 400px; }
+            80%  { left: 357px; top: 555px; }
+            100% { left: 200px; top: 760px; transform: scaleX(-1); }  
+        }
+        #turtle {
+            position: absolute;
+            width: 200px;
+            animation-name: Turtle;
+            animation-duration: 15s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+        }
+        @keyframes Turtle {
+            0%   { left: 700px; top: 700px; }
+            20%  { left: 700px; top: 600px; }
+            40%  { left: 700px; top: 550px; }
+            50%  { left: 700px; top: 650px; }
+            60%  { left: 700px; top: 700px; }
+            80%  { left: 700px; top: 800px; }
+            100% { left: 700px; top: 650px; transform: scaleX(-1); }  
+        }
+        #diver1 {
+            position: absolute;
+            width: 200px;
+            animation-name: Diver1;
+            animation-duration: 17s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+        }
+        @keyframes Diver1 {
+            0%   { left: 100px; top: 50px; }
+            20%  { left: 200px; top: 50px; }
+            40%  { left: 300px; top: 50px; }
+            50%  { left: 200px; top: 50px; }
+            60%  { left: 100px; top: 50px; }
+            80%  { left: 200px; top: 50px;}
+            100% { left: 0px; top: 0px; transform: scaleX(0); }  
+        }
+        #faint {
+            position: absolute;
+            width: 200px;
+            animation-name: Faint;
+            animation-duration: 15s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+        }
+        @keyframes Faint {
+            0%   { left: 700px; top: 100px; }
+            20%  { left: 600px; top: 200px; }
+            40%  { left: 500px; top: 300px; }
+            50%  { left: 400px; top: 400px; }
+            60%  { left: 300px; top: 500px; }
+            80%  { left: 200px; top: 600px; }
+            100% { left: 100px; top: 700px; transform: scaleX(-2); }  
+        }
+        #goldfish {
+            position: absolute;
+            width: 150px;
+            animation-name: Goldfish;
+            animation-duration: 15s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+        }
+        @keyframes goldfish {
+            0%   { left: 600px; top: 450px; }
+            20%  { left: 220px; top: 340px; }
+            40%  { left: 660px; top: 550px; }
+            50%  { left: 130px; top: 450px; }
+            60%  { left: 350px; top: 770px; }
+            80%  { left: 250px; top: 550px; }
+            100% { left: 760px; top: 890px; transform: scaleX(-2); }  
+        }
+        .fixed-bottom-left {
+            position: fixed;
+            left: -46px;
+            bottom: -10px;
+            width: 500px;
+            height: 500px;
+            z-index: 1000;
+        }
+        .fixed-bottom-right {
+            position: fixed;
+            right: 410px;
+            bottom: 60px;
+            width: 100px;
+            height: auto;
+            z-index: 9000;
+        }
+        @keyframes Goldfish {
+            0%   { left: 100px; top: 200px; }
+            20%  { left: 300px; top: 700px; }
+            40%  { left: 500px; top: 700px; }
+            50%  { left: 700px; top: 550px; }
+            60%  { left: 700px; top: 100px; }
+            80%  { left: 500px; top: 200px; }
+            100% { left: 100px; top: 400px; transform: scaleX(-2); }  
+        }
+    </style>
+</head>
+<body>
+    <div id="hoca">
+        <img id="diver1" src="aquarium/diver1.png" alt="Diver1">
+        <img id="faint" src="aquarium/faintSchool.png" alt="Faint">
+        <img src="aquarium/reef.png" alt="Fixed Object" class="fixed-bottom-left">
+        <img id="shark" src="aquarium/shark.png" alt="Shark">
+        <img id="turtle" src="aquarium/turtle.png" alt="Turtle">
+        <img id="goldfish" src="aquarium/goldFishSchool.png" alt="Goldfish">
+        <img src="aquarium/sw.png" alt="Fixed Object" class="fixed-bottom-right">
+    </div>
+
+    <script>
+        function moveFishSmoothly(fish) {
+            const x = Math.floor(Math.random() * (window.innerWidth - 100));
+            const y = Math.floor(Math.random() * (window.innerHeight - 100));
+            fish.style.transform = `translate(${x}px, ${y}px)`;
+        }
+        function startSwimmingSmoothly() {
+            const fishElements = document.querySelectorAll('.fish');
+            fishElements.forEach(fish => {
+                setInterval(() => {
+                    moveFishSmoothly(fish);
+                }, 3000);
+            });
+        }
+        window.onload = startSwimmingSmoothly;
+    </script>
+</body>
+</html>
